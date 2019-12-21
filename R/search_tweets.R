@@ -344,6 +344,7 @@ search_tweets_ <- function(q = "",
     premium$path <- sub("tweets/search/?|search/tweets/?", "", premium$path)
     query <- gsub("/+", "/",
       paste0("tweets/search/", premium$path, "/", premium$env_name))
+    if (isTRUE(premium$count)) query <- paste0(query, "/counts")
     cat(query, "***")
 
     if ("safedir" %in% names(list(...))) {

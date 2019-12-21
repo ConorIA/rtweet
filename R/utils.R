@@ -150,7 +150,7 @@ scroller <- function(url, n, n.times, type = NULL, ..., verbose = TRUE, safedir 
                 length(x[[i]][['statuses']]) == 0L))) {
       break
     }
-    if (has_name_(x[[i]], "errors")) {
+    if (has_name_(x[[i]], "errors?")) {
       warning(x[[i]]$errors[["message"]], call. = FALSE)
       x[[i]] <- list(data.frame())
       break
@@ -358,7 +358,7 @@ return_last <- function(x, n = 1) {
 ##                                 check data                                 ##
 ##----------------------------------------------------------------------------##
 
-has_name_ <- function(x, name) isTRUE(name %in% names(x))
+has_name_ <- function(x, name) grepl(name, names(x))
 
 any_recursive <- function(x) {
   if (!is.recursive(x)) {
