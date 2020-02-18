@@ -404,6 +404,10 @@ search_tweets_ <- function(q = "",
     } else {
       params$maxResults <- 100
     }
+    if (grepl("counts", query)) {
+      params$maxResults <- NULL
+    }
+
     names(params)[1] <- "query"
     params$tweet_mode <- NULL
     params$safedir <- NULL
